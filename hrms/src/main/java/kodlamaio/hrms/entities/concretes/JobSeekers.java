@@ -31,8 +31,8 @@ public class JobSeekers extends User {
 	@Column(name = "identityNo")
 	private String identityNo;
 	
-	@Column(name = "birthOfYear")
-	private LocalDate birthOfYear;
+	@Column(name = "yearOfBirth")
+	private LocalDate yearOfBirth;
 	
 	
 
