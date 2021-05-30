@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 
 public class Employers extends User{
 
+	
 	@Column(name="company_name")
 	private String company_name;
 	
