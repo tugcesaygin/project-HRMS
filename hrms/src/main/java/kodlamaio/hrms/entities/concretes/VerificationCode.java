@@ -17,10 +17,17 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@PrimaryKeyJoinColumn(name = "user_id")
-@Table(name="verification")
-public class Verification {
 
+@Table(name="verification_code")
+public class VerificationCode {
+
+
+	public VerificationCode(int user_id, String code, boolean isVerified) {
+		super();
+		this.code=code;
+		this.isVerified=isVerified;
+		this.user_id=user_id;
+	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -43,6 +43,14 @@ public class UserManager implements UserService {
 		return new SuccessResult("User deleted.");
 	}
 
+
+	@Override
+	public DataResult<User> getUserByEmail(String email) {
+		return new SuccessDataResult<User>
+		(this.userDao.findUserByEmail(email));
+		
+	}
+
 //	@Override
 //	public Result update(User user) {
 		// TODO Auto-generated method stub

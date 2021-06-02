@@ -9,4 +9,6 @@ public interface JobSeekersService {
 
 	DataResult<List<JobSeekers>>getAll();
 	Result add(JobSeekers jobSeekers);
+
+	DataResult<JobSeekers> getJobseekerByIdentityNo(String identityNo);
 }
