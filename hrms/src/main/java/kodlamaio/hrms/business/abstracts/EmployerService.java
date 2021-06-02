@@ -7,6 +7,7 @@ import java.util.List;
 import kodlamaio.hrms.entities.concretes.Employers;
 
 public interface EmployerService {
+	
 	DataResult<List<Employers>> getAll();
 	Result add(Employers employers);
 }

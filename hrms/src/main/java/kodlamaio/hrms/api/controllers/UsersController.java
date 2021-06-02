@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,8 +33,8 @@ public class UsersController {
 	}
 	
 	@PostMapping("/add")
-	public Result add(User user) {
-		return this.userService.add(user);
+	public Result add(@RequestBody User users) {
+		return this.userService.add(users);
 		
 	}
 	

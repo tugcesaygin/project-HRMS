@@ -32,14 +32,14 @@ public class UserManager implements UserService {
 	}
 
 	@Override
-	public Result add(User user) {
-		this.userDao.save(user);
+	public Result add(User users) {
+		this.userDao.save(users);
 		return new SuccessResult("User added.");
 	}
 
 	@Override
-	public Result delete(User user) {
-		this.userDao.delete(user);
+	public Result delete(User users) {
+		this.userDao.delete(users);
 		return new SuccessResult("User deleted.");
 	}
 

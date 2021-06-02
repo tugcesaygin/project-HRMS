@@ -34,17 +34,17 @@ public class JobPositionsManager implements JobPositionsService  {
 
 
 	@Override
-	public Result add(JobPositions jobPositions) {
-		if(getByPositionTitle(jobPositions.getJob_titles()).getData() !=null){
-			return new ErrorResult(jobPositions.getJob_titles()+"This position alreadytaken.");
+	public Result add(JobPositions job_positions) {
+		if(getByJobPositionsTitle(job_positions.getJob_titles()).getData() !=null){
+			return new ErrorResult(job_positions.getJob_titles()+"This position alreadytaken.");
 		}
-		this.positionsDao.save(jobPositions);
+		this.positionsDao.save(job_positions);
 		return new SuccessResult("Job position is successfully added.");
 	}
 
 
 	@Override
-	public DataResult<JobPositions> getByPositionTitle(String job_titles) {
+	public DataResult<JobPositions> getByJobPositionsTitle(String job_titles) {
 		return new SuccessDataResult<JobPositions>(this.positionsDao.findByTitle(job_titles));
 	}
 

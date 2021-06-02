@@ -9,7 +9,7 @@ public interface JobPositionsDao extends JpaRepository<JobPositions,Integer> {
 
 	JobPositions getById(int id);
 
-	JobPositions findByTitle(String position);
+	JobPositions findByTitle(String job_titles);
 	
 
 }

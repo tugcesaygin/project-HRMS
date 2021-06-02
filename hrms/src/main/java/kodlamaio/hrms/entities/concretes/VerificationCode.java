@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.PrimaryKeyJoinColumn;
+
 import javax.persistence.Table;
+
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,17 +19,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Table(name="verification_code")
+
 public class VerificationCode {
 
-
-	public VerificationCode(int user_id, String code, boolean isVerified) {
-		super();
-		this.code=code;
-		this.isVerified=isVerified;
-		this.user_id=user_id;
-	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -39,9 +34,6 @@ public class VerificationCode {
 	
 	@Column(name="isVerified")
 	private boolean isVerified;
-	
-	@Column(name="verificationDate")
-	private LocalDate verificationDate;
 	
 	
 	

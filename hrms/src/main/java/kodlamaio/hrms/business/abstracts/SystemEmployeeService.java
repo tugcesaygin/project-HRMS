@@ -11,7 +11,7 @@ public interface SystemEmployeeService {
 
 
 	DataResult<List<SystemEmployee>> getAll();
-	Result add(SystemEmployee employeeService);
+	Result add(SystemEmployee system_employee);
 	
 	
 }

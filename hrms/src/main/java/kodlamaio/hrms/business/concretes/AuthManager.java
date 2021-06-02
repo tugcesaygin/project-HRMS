@@ -28,16 +28,16 @@ import kodlamaio.hrms.entities.concretes.VerificationCode;
 @Service
 public class AuthManager implements AuthService{
 
-	private User user;
+	private User users;
 	private Employers employers;
-	private JobSeekers jobSeekers;
+	private JobSeekers job_seekers;
 	private VerificationCode verificationCode;
 	private EmployerService employerService;
 	private JobSeekersService jobSeekersService;
 	private VerificationCodeService verificationCodeService;
-	private SystemEmployee systemEmployee;
+	private SystemEmployee system_employee;
 	private SystemEmployeeService employeeService;
-	private JobPositions jobPositions;
+	private JobPositions job_positions;
 	private UserService userService;
 	private MernisValidationService mernisValidationService;
 	private SimulatedMernisService mernisService;
@@ -45,21 +45,21 @@ public class AuthManager implements AuthService{
 	
 
 	@Autowired
-	public AuthManager(User user , Employers employers, VerificationCode verificationCode,JobSeekers jobSeekers, 
+	public AuthManager(User users , Employers employers, VerificationCode verificationCode,JobSeekers job_seekers, 
 			EmployerService employerService, JobSeekersService jobSeekersService ,VerificationCodeService verificationCodeService, 
-			SystemEmployee systemEmployee, JobPositions jobPositions, UserService userService, MernisValidationService mernisValidationService,
+			SystemEmployee system_employee, JobPositions job_positions, UserService userService, MernisValidationService mernisValidationService,
 			SimulatedMernisService mernisService, VerificationService verificationService) {
 		
 		super();
 		this.employers=employers;
 		this.employerService=employerService;
-		this.jobSeekers=jobSeekers;
+		this.job_seekers=job_seekers;
 		this.jobSeekersService=jobSeekersService;
-		this.user=user;
+		this.users=users;
 		this.verificationCode=verificationCode;
 		this.verificationCodeService=verificationCodeService;
-		this.systemEmployee=systemEmployee;
-		this.jobPositions=jobPositions;
+		this.system_employee=system_employee;
+		this.job_positions=job_positions;
 		this.userService=userService;
 		this.mernisValidationService=mernisValidationService;
 		this.mernisService=mernisService;
@@ -70,23 +70,23 @@ public class AuthManager implements AuthService{
 	
 	
 	@Override
-	public Result employerRegister(Employers employer,String confirmPassword) {
-		 if(!CheckIfFullInfoForEmployers(employer)) {
+	public Result employersRegister(Employers employers,String confirmPassword) {
+		 if(!CheckIfFullInfoForEmployers(employers)) {
 			 return new ErrorResult("Missing information.");
 		 }
-		 if(!CheckIfEmailandDomainSame(employer.getEmail(), employer.getWebSite())) {
+		 if(!CheckIfEmailandDomainSame(employers.getEmail(), employers.getWebSite())) {
 			 return new ErrorResult("Your e-mail adress don't have the same domain as your Web Site. ");
 		 }
-		 if(!CheckIfEmailExist(employer.getEmail())) {
+		 if(!CheckIfEmailExist(employers.getEmail())) {
 			 return new ErrorResult("This e-mail is invalid");
 		 }
-		 if(!checkIfEqualPasswordAndConfirmPassword(employer.getPassword(), confirmPassword)) {
+		 if(!checkIfEqualPasswordAndConfirmPassword(employers.getPassword(), confirmPassword)) {
 			 return new ErrorResult("Passwords don't match. Please make sure you enter the same password.");
 		 }
 	
-		employerService.add(employer);
+		employerService.add(employers);
 		String code = verificationService.sendCode();
-		verificationCodeRecord(code, employer.getId(), employer.getEmail());
+		verificationCodeRecord(code, employers.getId(), employers.getEmail());
 		return new SuccessResult("Registration has been successfully completed");
 		 
 		
@@ -98,24 +98,24 @@ public class AuthManager implements AuthService{
 	
 	
 	@Override
-	public Result jobSeekerRegister(JobSeekers jobSeeker, String confirmPassword) {
-		if(!CheckIfFullInfoForJobSeekers(jobSeeker, confirmPassword)) {
+	public Result jobSeekersRegister(JobSeekers job_seekers, String confirmPassword) {
+		if(!CheckIfFullInfoForJobSeekers(job_seekers, confirmPassword)) {
 			return new ErrorResult("Missing information.");
 		}
-		if(!verificatePerson(jobSeeker.getIdentityNo(), jobSeeker.getName(),jobSeeker.getLastName(),
-				jobSeeker.getYearOfBirth())==false) {
+		if(!verificatePerson(job_seekers.getIdentityNo(), job_seekers.getName(),job_seekers.getLastName(),
+				job_seekers.getYearOfBirth())==false) {
 			return new ErrorResult("Identity No couldn't be verified.");
 		}
-		if(!CheckIfIdentityNoExist(jobSeeker.getIdentityNo())) {
+		if(!CheckIfIdentityNoExist(job_seekers.getIdentityNo())) {
 			return new ErrorResult("You have entered missing information. Please fill in all fields.");
 		}
-		if (!CheckIfEmailExist(jobSeeker.getEmail())) {
-			return new ErrorResult(jobSeekers.getEmail() + " already exists.");
+		if (!CheckIfEmailExist(job_seekers.getEmail())) {
+			return new ErrorResult(job_seekers.getEmail() + " already exists.");
 		}
 		
-		jobSeekersService.add(jobSeeker);
+		jobSeekersService.add(job_seekers);
 		String code = verificationService.sendCode();
-		verificationCodeRecord(code, jobSeeker.getId(), jobSeeker.getEmail());
+		verificationCodeRecord(code, job_seekers.getId(), job_seekers.getEmail());
 		return new SuccessResult("Registration has been successfully completed");
 
 	}
@@ -144,16 +144,16 @@ public class AuthManager implements AuthService{
 	}
 	
 	private boolean CheckIfIdentityNoExist(String identityNo) {
-		if(this.jobSeekersService.getJobseekerByIdentityNo(identityNo).getData()==null) {
+		if(this.jobSeekersService.getJobSeekersByIdentityNo(identityNo).getData()==null) {
 			return true;
 		}
 		return false;
 		
 	}
 	
-	private boolean CheckIfFullInfoForJobSeekers(JobSeekers jobSeekers , String confirmPassword) {
-		if(jobSeekers.getName()!=null && jobSeekers.getLastName()!=null && jobSeekers.getIdentityNo()!= null&& 
-				jobSeekers.getYearOfBirth()!=null&& jobSeekers.getEmail()!=null&& jobSeekers.getPassword()!=null
+	private boolean CheckIfFullInfoForJobSeekers(JobSeekers job_seekers , String confirmPassword) {
+		if(job_seekers.getName()!=null && job_seekers.getLastName()!=null && job_seekers.getIdentityNo()!= null&& 
+				job_seekers.getYearOfBirth()!=null&& job_seekers.getEmail()!=null&& job_seekers.getPassword()!=null
 				&& confirmPassword !=null) {
 			return true;
 		}

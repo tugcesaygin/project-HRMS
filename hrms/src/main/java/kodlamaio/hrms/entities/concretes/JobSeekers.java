@@ -4,26 +4,29 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@PrimaryKeyJoinColumn(name = "user_id")
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "job_seekers")
+@EqualsAndHashCode(callSuper = false) 
+@PrimaryKeyJoinColumn(name="user_id", referencedColumnName="id") 
+
 
 public class JobSeekers extends User {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	@Column(name = "name")
 	private String name;
 	

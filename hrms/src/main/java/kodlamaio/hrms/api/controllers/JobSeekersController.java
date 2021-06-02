@@ -1,5 +1,6 @@
 package kodlamaio.hrms.api.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,7 @@ public class JobSeekersController {
 
 	private JobSeekersService jobSeekersService;
 	
+	@Autowired
 	public JobSeekersController(JobSeekersService jobSeekersService) {
 		super();
 		this.jobSeekersService= jobSeekersService;
@@ -30,8 +32,8 @@ public class JobSeekersController {
 	
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody JobSeekers jobSeekers) {
-		return this.jobSeekersService.add(jobSeekers);
+	public Result add(@RequestBody JobSeekers job_seekers) {
+		return this.jobSeekersService.add(job_seekers);
 	}
 	
 	

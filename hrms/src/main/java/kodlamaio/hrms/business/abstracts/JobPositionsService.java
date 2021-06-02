@@ -9,8 +9,8 @@ import kodlamaio.hrms.entities.concretes.JobPositions;
 public interface JobPositionsService {
    
 	DataResult<List<JobPositions>> getAll();
-	Result add(JobPositions jobPositions);
+	Result add(JobPositions job_positions);
 	
-	DataResult<JobPositions> getByPositionTitle(String job_titles);
+	DataResult<JobPositions> getByJobPositionsTitle(String job_titles);
 	
 }

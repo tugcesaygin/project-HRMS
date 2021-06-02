@@ -4,8 +4,11 @@ package kodlamaio.hrms.core.utilities.adaptors;
 
 import java.time.LocalDate;
 
+import org.springframework.stereotype.Service;
+
 import kodlamaio.hrms.Mernis.PersonVerification;
 
+@Service
 public class SimulatedMernisService  implements MernisValidationService{
 
 	@Override

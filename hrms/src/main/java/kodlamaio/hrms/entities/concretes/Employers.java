@@ -10,6 +10,7 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -18,6 +19,9 @@ import lombok.NoArgsConstructor;
 @PrimaryKeyJoinColumn(name = "user_id")
 @NoArgsConstructor
 @Table(name= "employers")
+@EqualsAndHashCode(callSuper = false) 
+
+@PrimaryKeyJoinColumn(name="user_id", referencedColumnName="id") 
 
 public class Employers extends User{
 
