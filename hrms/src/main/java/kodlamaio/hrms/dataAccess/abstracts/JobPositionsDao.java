@@ -6,7 +6,10 @@ import kodlamaio.hrms.entities.concretes.JobPositions;
 
 public interface JobPositionsDao extends JpaRepository<JobPositions,Integer> {
 
-	
+
+	JobPositions getById(int id);
+
+	JobPositions findByTitle(String position);
 	
 
 }

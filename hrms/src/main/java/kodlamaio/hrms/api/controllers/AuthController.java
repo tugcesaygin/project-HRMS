@@ -7,6 +7,7 @@ import kodlamaio.hrms.business.abstracts.AuthService;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.Employers;
 import kodlamaio.hrms.entities.concretes.JobSeekers;
+import kodlamaio.hrms.entities.concretes.SystemEmployee;
 public class AuthController {
 
 	private AuthService authService;
@@ -26,5 +27,6 @@ public class AuthController {
 	public Result add(@RequestBody JobSeekers jobSeekers) {
 		return this.authService.jobSeekerRegister(jobSeekers);
 	}
+	
 	
 }

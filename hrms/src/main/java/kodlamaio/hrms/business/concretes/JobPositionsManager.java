@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.JobPositionsService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
@@ -34,9 +35,22 @@ public class JobPositionsManager implements JobPositionsService  {
 
 	@Override
 	public Result add(JobPositions jobPositions) {
+		if(getByPositionTitle(jobPositions.getJob_titles()).getData() !=null){
+			return new ErrorResult(jobPositions.getJob_titles()+"This position alreadytaken.");
+		}
 		this.positionsDao.save(jobPositions);
-		return new SuccessResult("Job Position added.");
+		return new SuccessResult("Job position is successfully added.");
 	}
+
+
+	@Override
+	public DataResult<JobPositions> getByPositionTitle(String job_titles) {
+		return new SuccessDataResult<JobPositions>(this.positionsDao.findByTitle(job_titles));
+	}
+
+
+
+
 
 	
 }
