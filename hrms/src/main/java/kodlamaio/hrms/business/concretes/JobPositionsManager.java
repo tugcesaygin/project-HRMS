@@ -17,19 +17,19 @@ import kodlamaio.hrms.entities.concretes.JobPositions;
 @Service
 public class JobPositionsManager implements JobPositionsService  {
 
-	private JobPositionsDao positionsDao;
+	private JobPositionsDao job_positionsDao;
 	
 	@Autowired
 	public JobPositionsManager(JobPositionsDao positionsDao) {
 		super();
-		this.positionsDao=positionsDao;
+		this.job_positionsDao=positionsDao;
 	}
 	
 	
 	@Override
 	public DataResult<List<JobPositions>> getAll() {
 		return new SuccessDataResult<List<JobPositions>>
-		(this.positionsDao.findAll(),"Job Positions Listed.");
+		(this.job_positionsDao.findAll(),"Job Positions Listed.");
 	}
 
 
@@ -38,14 +38,14 @@ public class JobPositionsManager implements JobPositionsService  {
 		if(getByJobPositionsTitle(job_positions.getJob_titles()).getData() !=null){
 			return new ErrorResult(job_positions.getJob_titles()+"This position alreadytaken.");
 		}
-		this.positionsDao.save(job_positions);
+		this.job_positionsDao.save(job_positions);
 		return new SuccessResult("Job position is successfully added.");
 	}
 
 
 	@Override
 	public DataResult<JobPositions> getByJobPositionsTitle(String job_titles) {
-		return new SuccessDataResult<JobPositions>(this.positionsDao.findByTitle(job_titles));
+		return new SuccessDataResult<JobPositions>(this.job_positionsDao.findByTitle(job_titles));
 	}
 
 

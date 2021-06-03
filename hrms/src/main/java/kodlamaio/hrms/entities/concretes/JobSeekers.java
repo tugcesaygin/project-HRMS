@@ -30,14 +30,14 @@ public class JobSeekers extends User {
 	@Column(name = "name")
 	private String name;
 	
-	@Column(name = "lastName")
-	private String lastName;
+	@Column(name = "last_name")
+	private String last_name;
 	
-	@Column(name = "identityNo")
-	private String identityNo;
+	@Column(name = "identity_no")
+	private String identity_no;
 	
-	@Column(name = "yearOfBirth")
-	private LocalDate yearOfBirth;
+	@Column(name = "year_of_birth")
+	private LocalDate year_of_birth;
 	
 	
 

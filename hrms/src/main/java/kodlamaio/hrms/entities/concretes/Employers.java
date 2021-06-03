@@ -27,11 +27,11 @@ public class Employers extends User{
 	@Column(name="company_name")
 	private String company_name;
 	
-	@Column(name= "webSite")
-	private String webSite;
+	@Column(name= "web_site")
+	private String web_site;
 	
-	@Column(name= "telNo")
-	private String telNo;
+	@Column(name= "tel_no")
+	private String tel_no;
 	
 	
 	

@@ -39,9 +39,9 @@ public class JobSeekersManager implements JobSeekersService {
 
 
 	@Override
-	public DataResult<JobSeekers> getJobSeekersByIdentityNo(String identityNo) {
+	public DataResult<JobSeekers> getJobSeekersByIdentityNo(String identity_no) {
 		return new SuccessDataResult<JobSeekers>
-		(this.job_seekersDao.findJobSeekersByIdentityNo(identityNo));
+		(this.job_seekersDao.findJobSeekersByIdentityNo(identity_no));
 	}
 
 }

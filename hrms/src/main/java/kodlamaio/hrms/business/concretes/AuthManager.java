@@ -72,7 +72,7 @@ public class AuthManager implements AuthService{
 		 if(!CheckIfFullInfoForEmployers(employers)) {
 			 return new ErrorResult("Missing information.");
 		 }
-		 if(!CheckIfEmailandDomainSame(employers.getEmail(), employers.getWebSite())) {
+		 if(!CheckIfEmailandDomainSame(employers.getEmail(), employers.getWeb_site())) {
 			 return new ErrorResult("Your e-mail adress don't have the same domain as your Web Site. ");
 		 }
 		 if(!CheckIfEmailExist(employers.getEmail())) {
@@ -100,11 +100,11 @@ public class AuthManager implements AuthService{
 		if(!CheckIfFullInfoForJobSeekers(job_seekers, confirmPassword)) {
 			return new ErrorResult("Missing information.");
 		}
-		if(!verificatePerson(job_seekers.getIdentityNo(), job_seekers.getName(),job_seekers.getLastName(),
-				job_seekers.getYearOfBirth())==false) {
+		if(!verificatePerson(job_seekers.getIdentity_no(), job_seekers.getName(),job_seekers.getLast_name(),
+				job_seekers.getYear_of_birth())==false) {
 			return new ErrorResult("Identity No couldn't be verified.");
 		}
-		if(!CheckIfIdentityNoExist(job_seekers.getIdentityNo())) {
+		if(!CheckIfIdentityNoExist(job_seekers.getIdentity_no())) {
 			return new ErrorResult("You have entered missing information. Please fill in all fields.");
 		}
 		if (!CheckIfEmailExist(job_seekers.getEmail())) {
@@ -130,9 +130,9 @@ public class AuthManager implements AuthService{
 		return false;
 	}
 	
-	private boolean verificatePerson(String identityNo ,String name ,String lastName , LocalDate yearOfBirth) {
+	private boolean verificatePerson(String identity_no ,String name ,String last_name , LocalDate year_of_birth) {
 	
-		if(mernisValidationService.CheckIfRealPerson(identityNo, name, lastName, yearOfBirth)) {
+		if(mernisValidationService.CheckIfRealPerson(identity_no, name, last_name, year_of_birth)) {
 			System.out.println("Person exist.");
 			return true;
 		}
@@ -141,8 +141,8 @@ public class AuthManager implements AuthService{
 		
 	}
 	
-	private boolean CheckIfIdentityNoExist(String identityNo) {
-		if(this.jobSeekersService.getJobSeekersByIdentityNo(identityNo).getData()==null) {
+	private boolean CheckIfIdentityNoExist(String identity_no) {
+		if(this.jobSeekersService.getJobSeekersByIdentityNo(identity_no).getData()==null) {
 			return true;
 		}
 		return false;
@@ -150,8 +150,8 @@ public class AuthManager implements AuthService{
 	}
 	
 	private boolean CheckIfFullInfoForJobSeekers(JobSeekers job_seekers , String confirmPassword) {
-		if(job_seekers.getName()!=null && job_seekers.getLastName()!=null && job_seekers.getIdentityNo()!= null&& 
-				job_seekers.getYearOfBirth()!=null&& job_seekers.getEmail()!=null&& job_seekers.getPassword()!=null
+		if(job_seekers.getName()!=null && job_seekers.getLast_name()!=null && job_seekers.getIdentity_no()!= null&& 
+				job_seekers.getYear_of_birth()!=null&& job_seekers.getEmail()!=null&& job_seekers.getPassword()!=null
 				&& confirmPassword !=null) {
 			return true;
 		}
@@ -159,17 +159,17 @@ public class AuthManager implements AuthService{
 	}
 	
 	private boolean CheckIfFullInfoForEmployers(Employers employers ) {
-		if(employers.getCompany_name()!=null && employers.getWebSite()!= null&&
-				employers.getEmail()!=null && employers.getTelNo()!=null&&
+		if(employers.getCompany_name()!=null && employers.getWeb_site()!= null&&
+				employers.getEmail()!=null && employers.getTel_no()!=null&&
 				employers.getPassword()!=null) {
 			return true;
 			}
 			return false;
 	}
 	
-	private boolean CheckIfEmailandDomainSame(String email,String webSite) {
+	private boolean CheckIfEmailandDomainSame(String email,String web_site) {
 		String[] emailArr = email.split("@", 2);
-		if((emailArr[1].equals(employers.getWebSite().contains(webSite.subSequence(4,webSite.length()))))) {
+		if((emailArr[1].equals(employers.getWeb_site().contains(web_site.subSequence(4,web_site.length()))))) {
 			return true;
 		}
 		return false;

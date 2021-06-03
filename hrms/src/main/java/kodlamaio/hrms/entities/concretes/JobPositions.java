@@ -30,7 +30,7 @@ public class JobPositions {
 	private String job_titles;
 	
 	@Column(name= "user_id")
-	private String user_id;
+	private int user_id;
 	
 	
 	

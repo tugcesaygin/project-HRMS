@@ -31,7 +31,7 @@ public class SystemEmployee extends User {
 	//private String user_id;
 
 	
-	@Column(name="lastName")
-	private String lastName;
+	@Column(name="last_name")
+	private String last_name;
 	
 }

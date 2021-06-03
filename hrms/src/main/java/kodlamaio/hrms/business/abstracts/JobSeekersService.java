@@ -10,5 +10,5 @@ public interface JobSeekersService {
 	DataResult<List<JobSeekers>>getAll();
 	Result add(JobSeekers job_seekers);
 
-	DataResult<JobSeekers> getJobSeekersByIdentityNo(String identityNo);
+	DataResult<JobSeekers> getJobSeekersByIdentityNo(String identity_no);
 }

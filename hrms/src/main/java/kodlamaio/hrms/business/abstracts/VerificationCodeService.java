@@ -6,7 +6,7 @@ import kodlamaio.hrms.entities.concretes.VerificationCode;
 
 public interface VerificationCodeService {
 
-	Result add(VerificationCode code);
+	Result add(VerificationCode verification_code);
 	
 	
 }

@@ -1,11 +1,10 @@
 package kodlamaio.hrms.entities.concretes;
 
-import java.time.LocalDate;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -33,8 +32,8 @@ public class VerificationCode {
 	@Column(name="code")
 	private String code;
 	
-	@Column(name="isVerified")
-	private boolean isVerified;
+	@Column(name="is_verified")
+	private boolean is_verified;
 	
 	
 	

@@ -7,7 +7,7 @@ import kodlamaio.hrms.entities.concretes.JobSeekers;
 public interface JobSeekersDao extends JpaRepository<JobSeekers, Integer> {
 
 
-	JobSeekers findJobSeekersByIdentityNo(String identityNo);
+	JobSeekers findJobSeekersByIdentityNo(String identity_no);
 	JobSeekers getById(int id);
 	
 }

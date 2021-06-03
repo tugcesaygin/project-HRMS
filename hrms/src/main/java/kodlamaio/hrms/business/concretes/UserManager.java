@@ -16,30 +16,30 @@ import kodlamaio.hrms.entities.concretes.User;
 @Service
 public class UserManager implements UserService {
 
-	private UserDao userDao;
+	private UserDao usersDao;
 	
 	@Autowired
 	public UserManager(UserDao userDao) {
 		super();
-		this.userDao=userDao;
+		this.usersDao=userDao;
 	}
 
 	
 	@Override
 	public DataResult<List<User>> getAll() {
 		
-		return new SuccessDataResult<List<User>>(this.userDao.findAll(), "User Listed.");
+		return new SuccessDataResult<List<User>>(this.usersDao.findAll(), "User Listed.");
 	}
 
 	@Override
 	public Result add(User users) {
-		this.userDao.save(users);
+		this.usersDao.save(users);
 		return new SuccessResult("User added.");
 	}
 
 	@Override
 	public Result delete(User users) {
-		this.userDao.delete(users);
+		this.usersDao.delete(users);
 		return new SuccessResult("User deleted.");
 	}
 
@@ -47,7 +47,7 @@ public class UserManager implements UserService {
 	@Override
 	public DataResult<User> getUserByEmail(String email) {
 		return new SuccessDataResult<User>
-		(this.userDao.findUserByEmail(email));
+		(this.usersDao.findUserByEmail(email));
 		
 	}
 
