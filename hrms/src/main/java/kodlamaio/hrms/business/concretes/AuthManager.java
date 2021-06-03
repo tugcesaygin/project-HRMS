@@ -36,35 +36,29 @@ public class AuthManager implements AuthService{
 	private EmployerService employerService;
 	private JobSeekersService jobSeekersService;
 	private VerificationCodeService verificationCodeService;
-	
-	private SystemEmployeeService employeeService;
-
+	private SystemEmployeeService systemEmployeeService;
 	private UserService userService;
 	private MernisValidationService mernisValidationService;
-	private SimulatedMernisService mernisService;
+	private SimulatedMernisService simulatedMernisService;
 	private VerificationService verificationService;
-	private UserDao usersDao;
+	private UserDao userDao;
 
 	@Autowired
 	public AuthManager(  
 			EmployerService employerService, JobSeekersService jobSeekersService ,VerificationCodeService verificationCodeService, 
-			UserService userService, MernisValidationService mernisValidationService,
-			SimulatedMernisService mernisService, VerificationService verificationService , UserDao usersDao) {
+			UserService userService, MernisValidationService mernisValidationService, SystemEmployeeService systemEmployeeService,
+			SimulatedMernisService simulatedMernisService, VerificationService verificationService , UserDao userDao) {
 		
 		super();
-		
+		this.systemEmployeeService=systemEmployeeService;
 		this.employerService=employerService;
-		
 		this.jobSeekersService=jobSeekersService;
-	
-	
 		this.verificationCodeService=verificationCodeService;
-
-
 		this.userService=userService;
 		this.mernisValidationService=mernisValidationService;
-		this.mernisService=mernisService;
+		this.simulatedMernisService=simulatedMernisService;
 		this.verificationService=verificationService;
+		this.userDao=userDao;
 		
 	}
 	
@@ -75,7 +69,7 @@ public class AuthManager implements AuthService{
 		 if(!CheckIfFullInfoForEmployers(employers)) {
 			 return new ErrorResult("Missing information.");
 		 }
-		 if(!CheckIfEmailandDomainSame(employers.getEmail(), employers.getWeb_site())) {
+		 if(!CheckIfEmailandDomainSame(employers.getEmail(), employers.getWebSite())) {
 			 return new ErrorResult("Your e-mail adress don't have the same domain as your Web Site. ");
 		 }
 		 if(!CheckIfEmailExist(employers.getEmail())) {
@@ -99,24 +93,24 @@ public class AuthManager implements AuthService{
 	
 	
 	@Override
-	public Result jobSeekersRegister(JobSeekers job_seekers, String confirmPassword) {
-		if(!CheckIfFullInfoForJobSeekers(job_seekers, confirmPassword)) {
+	public Result jobSeekersRegister(JobSeekers jobSeekers, String confirmPassword) {
+		if(!CheckIfFullInfoForJobSeekers(jobSeekers, confirmPassword)) {
 			return new ErrorResult("Missing information.");
 		}
-		if(!verificatePerson(job_seekers.getIdentity_no(), job_seekers.getName(),job_seekers.getLast_name(),
-				job_seekers.getYear_of_birth())==false) {
+		if(!verificatePerson(jobSeekers.getIdentityNo(), jobSeekers.getName(),jobSeekers.getLastName(),
+				jobSeekers.getYearOfBirth())==false) {
 			return new ErrorResult("Identity No couldn't be verified.");
 		}
-		if(!CheckIfIdentityNoExist(job_seekers.getIdentity_no())) {
+		if(!CheckIfIdentityNoExist(jobSeekers.getIdentityNo())) {
 			return new ErrorResult("You have entered missing information. Please fill in all fields.");
 		}
-		if (!CheckIfEmailExist(job_seekers.getEmail())) {
-			return new ErrorResult(job_seekers.getEmail() + " already exists.");
+		if (!CheckIfEmailExist(jobSeekers.getEmail())) {
+			return new ErrorResult(jobSeekers.getEmail() + " already exists.");
 		}
 		
-		jobSeekersService.add(job_seekers);
+		jobSeekersService.add(jobSeekers);
 		String code = verificationService.sendCode();
-		verificationCodeRecord(code, job_seekers.getId(), job_seekers.getEmail());
+		verificationCodeRecord(code, jobSeekers.getId(), jobSeekers.getEmail());
 		return new SuccessResult("Registration has been successfully completed");
 
 	}
@@ -133,9 +127,9 @@ public class AuthManager implements AuthService{
 		return false;
 	}
 	
-	private boolean verificatePerson(String identity_no ,String name ,String last_name , LocalDate year_of_birth) {
+	private boolean verificatePerson(String identityNo ,String name ,String lastName , LocalDate yearOfBirth) {
 	
-		if(mernisValidationService.CheckIfRealPerson(identity_no, name, last_name, year_of_birth)) {
+		if(mernisValidationService.CheckIfRealPerson(identityNo, name, lastName, yearOfBirth)) {
 			System.out.println("Person exist.");
 			return true;
 		}
@@ -144,17 +138,17 @@ public class AuthManager implements AuthService{
 		
 	}
 	
-	private boolean CheckIfIdentityNoExist(String identity_no) {
-		if(this.jobSeekersService.getJobSeekersByIdentityNo(identity_no).getData()==null) {
+	private boolean CheckIfIdentityNoExist(String identityNo) {
+		if(this.jobSeekersService.getJobSeekersByIdentityNo(identityNo).getData()==null) {
 			return true;
 		}
 		return false;
 		
 	}
 	
-	private boolean CheckIfFullInfoForJobSeekers(JobSeekers job_seekers , String confirmPassword) {
-		if(job_seekers.getName()!=null && job_seekers.getLast_name()!=null && job_seekers.getIdentity_no()!= null&& 
-				job_seekers.getYear_of_birth()!=null&& job_seekers.getEmail()!=null&& job_seekers.getPassword()!=null
+	private boolean CheckIfFullInfoForJobSeekers(JobSeekers jobSeekers , String confirmPassword) {
+		if(jobSeekers.getName()!=null && jobSeekers.getLastName()!=null && jobSeekers.getIdentityNo()!= null&& 
+				jobSeekers.getYearOfBirth()!=null&& jobSeekers.getEmail()!=null&& jobSeekers.getPassword()!=null
 				&& confirmPassword !=null) {
 			return true;
 		}
@@ -162,17 +156,17 @@ public class AuthManager implements AuthService{
 	}
 	
 	private boolean CheckIfFullInfoForEmployers(Employers employers ) {
-		if(employers.getCompany_name()!=null && employers.getWeb_site()!= null&&
-				employers.getEmail()!=null && employers.getTel_no()!=null&&
+		if(employers.getCompanyName()!=null && employers.getWebSite()!= null&&
+				employers.getEmail()!=null && employers.getTelNo()!=null&&
 				employers.getPassword()!=null) {
 			return true;
 			}
 			return false;
 	}
 	
-	private boolean CheckIfEmailandDomainSame(String email,String web_site) {
+	private boolean CheckIfEmailandDomainSame(String email,String webSite) {
 		String[] emailArr = email.split("@", 2);
-		String domain = web_site.substring(4, web_site.length());
+		String domain = webSite.substring(4, webSite.length());
 
 		if (emailArr[1].equals(domain)) {
 

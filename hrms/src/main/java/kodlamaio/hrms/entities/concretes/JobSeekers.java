@@ -31,13 +31,13 @@ public class JobSeekers extends User {
 	private String name;
 	
 	@Column(name = "last_name")
-	private String last_name;
+	private String lastName;
 	
 	@Column(name = "identity_no")
-	private String identity_no;
+	private String identityNo;
 	
 	@Column(name = "year_of_birth")
-	private LocalDate year_of_birth;
+	private LocalDate yearOfBirth;
 	
 	
 

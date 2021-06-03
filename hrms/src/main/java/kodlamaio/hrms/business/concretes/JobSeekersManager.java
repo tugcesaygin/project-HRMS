@@ -16,32 +16,32 @@ import kodlamaio.hrms.entities.concretes.JobSeekers;
 @Service
 public class JobSeekersManager implements JobSeekersService {
 
-	private JobSeekersDao job_seekersDao;
+	private JobSeekersDao jobSeekersDao;
 	
 	@Autowired
-	public JobSeekersManager(JobSeekersDao job_seekersDao ) {
+	public JobSeekersManager(JobSeekersDao jobSeekersDao ) {
 	super();
-	this.job_seekersDao = job_seekersDao;
+	this.jobSeekersDao = jobSeekersDao;
 	}
 	
 	
 	@Override
 	public DataResult<List<JobSeekers>> getAll() {
-		return new SuccessDataResult<List<JobSeekers>> (this.job_seekersDao.findAll(),"Job Seekers Listed.");
+		return new SuccessDataResult<List<JobSeekers>> (this.jobSeekersDao.findAll(),"Job Seekers Listed.");
 			
 	}
 
 	@Override
-	public Result add(JobSeekers job_seekers) {
-		this.job_seekersDao.save(job_seekers);
+	public Result add(JobSeekers jobSeekers) {
+		this.jobSeekersDao.save(jobSeekers);
 		return new SuccessResult("Job Seekers added.");
 	}
 
 
 	@Override
-	public DataResult<JobSeekers> getJobSeekersByIdentityNo(String identity_no) {
+	public DataResult<JobSeekers> getJobSeekersByIdentityNo(String identityNo) {
 		return new SuccessDataResult<JobSeekers>
-		(this.job_seekersDao.findJobSeekersByIdentityNo(identity_no));
+		(this.jobSeekersDao.findJobSeekersByIdentityNo(identityNo));
 	}
 
 }

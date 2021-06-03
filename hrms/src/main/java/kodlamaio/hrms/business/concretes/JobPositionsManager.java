@@ -17,35 +17,35 @@ import kodlamaio.hrms.entities.concretes.JobPositions;
 @Service
 public class JobPositionsManager implements JobPositionsService  {
 
-	private JobPositionsDao job_positionsDao;
+	private JobPositionsDao jobPositionsDao;
 	
 	@Autowired
-	public JobPositionsManager(JobPositionsDao positionsDao) {
+	public JobPositionsManager(JobPositionsDao jobPositionsDao) {
 		super();
-		this.job_positionsDao=positionsDao;
+		this.jobPositionsDao=jobPositionsDao;
 	}
 	
 	
 	@Override
 	public DataResult<List<JobPositions>> getAll() {
 		return new SuccessDataResult<List<JobPositions>>
-		(this.job_positionsDao.findAll(),"Job Positions Listed.");
+		(this.jobPositionsDao.findAll(),"Job Positions Listed.");
 	}
 
 
 	@Override
-	public Result add(JobPositions job_positions) {
-		if(getByJobPositionsTitle(job_positions.getJob_titles()).getData() !=null){
-			return new ErrorResult(job_positions.getJob_titles()+"This position alreadytaken.");
+	public Result add(JobPositions jobPositions) {
+		if(getByJobPositionsTitle(jobPositions.getJobTitles()).getData() !=null){
+			return new ErrorResult(jobPositions.getJobTitles()+"This position alreadytaken.");
 		}
-		this.job_positionsDao.save(job_positions);
+		this.jobPositionsDao.save(jobPositions);
 		return new SuccessResult("Job position is successfully added.");
 	}
 
 
 	@Override
-	public DataResult<JobPositions> getByJobPositionsTitle(String job_titles) {
-		return new SuccessDataResult<JobPositions>(this.job_positionsDao.findByTitle(job_titles));
+	public DataResult<JobPositions> getByJobPositionsTitle(String jobTitles) {
+		return new SuccessDataResult<JobPositions>(this.jobPositionsDao.findByJobTitles(jobTitles));
 	}
 
 

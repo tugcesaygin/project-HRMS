@@ -25,13 +25,13 @@ public class Employers extends User{
 	//@Id
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="company_name")
-	private String company_name;
+	private String companyName;
 	
 	@Column(name= "web_site")
-	private String web_site;
+	private String webSite;
 	
 	@Column(name= "tel_no")
-	private String tel_no;
+	private String telNo;
 	
 	
 	

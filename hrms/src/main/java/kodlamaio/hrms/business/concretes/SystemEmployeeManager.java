@@ -16,12 +16,12 @@ import kodlamaio.hrms.entities.concretes.SystemEmployee;
 @Service
 public class SystemEmployeeManager implements SystemEmployeeService{
 
-	private SystemEmployeeDao system_employeeDao;
+	private SystemEmployeeDao systemEmployeeDao;
 	
 	@Autowired
-	public SystemEmployeeManager(SystemEmployeeDao system_employeeDao) {
+	public SystemEmployeeManager(SystemEmployeeDao systemEmployeeDao) {
 		super();
-		this.system_employeeDao=system_employeeDao;
+		this.systemEmployeeDao=systemEmployeeDao;
 	}
 	
 	
@@ -29,13 +29,13 @@ public class SystemEmployeeManager implements SystemEmployeeService{
 	@Override
 	public DataResult<List<SystemEmployee>> getAll() {
 		return new SuccessDataResult<List<SystemEmployee>>
-		(this.system_employeeDao.findAll(),"System Employee Listed.");
+		(this.systemEmployeeDao.findAll(),"System Employee Listed.");
 		
 	}
 
 	@Override
-	public Result add(SystemEmployee employee) {
-		this.system_employeeDao.save(employee);
+	public Result add(SystemEmployee systemEmployee) {
+		this.systemEmployeeDao.save(systemEmployee);
 		return new SuccessResult("System Employee added.");
 	}
 

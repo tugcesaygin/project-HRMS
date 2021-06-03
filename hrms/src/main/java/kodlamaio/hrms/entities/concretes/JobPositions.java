@@ -27,10 +27,10 @@ public class JobPositions {
 	private int id;
 	
 	@Column(name= "job_titles")
-	private String job_titles;
+	private String jobTitles;
 	
 	@Column(name= "user_id")
-	private int user_id;
+	private int userId;
 	
 	
 	
