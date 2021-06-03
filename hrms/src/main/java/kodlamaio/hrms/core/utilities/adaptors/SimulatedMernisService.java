@@ -12,13 +12,13 @@ import kodlamaio.hrms.Mernis.PersonVerification;
 public class SimulatedMernisService  implements MernisValidationService{
 
 	@Override
-	public boolean CheckIfRealPerson(String identityNo, String name, String lastName, LocalDate yearOfBirth) {
+	public boolean CheckIfRealPerson(String identity_no, String name, String last_name, LocalDate year_of_birth) {
 		PersonVerification person = new PersonVerification();
 		
 		boolean result = true ;
 
 		try {
-			result = person.verificatePerson(identityNo,name,lastName,yearOfBirth);
+			result = person.verificatePerson(identity_no,name,last_name,year_of_birth);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
