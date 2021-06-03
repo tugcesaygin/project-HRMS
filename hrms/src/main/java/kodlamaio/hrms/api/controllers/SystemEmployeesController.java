@@ -16,7 +16,7 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.SystemEmployee;
 
 @RestController
-@RequestMapping("/api/system _employees")
+@RequestMapping("/api/system_employees")
 public class SystemEmployeesController {
 
 	private SystemEmployeeService employeeService;

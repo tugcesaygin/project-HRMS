@@ -1,6 +1,7 @@
 package kodlamaio.hrms.business.concretes;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,10 +14,13 @@ import kodlamaio.hrms.business.abstracts.UserService;
 import kodlamaio.hrms.business.abstracts.VerificationCodeService;
 import kodlamaio.hrms.core.utilities.adaptors.MernisValidationService;
 import kodlamaio.hrms.core.utilities.adaptors.SimulatedMernisService;
+import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
+import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.core.verification.VerificationService;
+import kodlamaio.hrms.dataAccess.abstracts.UserDao;
 import kodlamaio.hrms.entities.concretes.Employers;
 import kodlamaio.hrms.entities.concretes.JobPositions;
 import kodlamaio.hrms.entities.concretes.JobSeekers;
@@ -40,15 +44,16 @@ public class AuthManager implements AuthService{
 	private MernisValidationService mernisValidationService;
 	private SimulatedMernisService mernisService;
 	private VerificationService verificationService;
-	
+	private UserDao usersDao;
 
 	@Autowired
 	public AuthManager(User users , Employers employers, VerificationCode verificationCode,JobSeekers job_seekers, 
 			EmployerService employerService, JobSeekersService jobSeekersService ,VerificationCodeService verificationCodeService, 
 			SystemEmployee system_employee, JobPositions job_positions, UserService userService, MernisValidationService mernisValidationService,
-			SimulatedMernisService mernisService, VerificationService verificationService) {
+			SimulatedMernisService mernisService, VerificationService verificationService , UserDao usersDao) {
 		
 		super();
+		this.usersDao=usersDao;
 		this.employers=employers;
 		this.employerService=employerService;
 		this.job_seekers=job_seekers;
@@ -191,5 +196,14 @@ public class AuthManager implements AuthService{
 		System.out.println("Verification code has been sent to " + email );
 	
 	}
+
+
+
+		@Override
+		public DataResult<List<User>> getAll() {
+			return new SuccessDataResult<List<User>>
+			(this.usersDao.findAll(),"Data Listed");
+		
+		}
 	
 }
