@@ -28,18 +28,17 @@ import kodlamaio.hrms.entities.concretes.User;
 import kodlamaio.hrms.entities.concretes.VerificationCode;
 
 @Service
+
 public class AuthManager implements AuthService{
 
-	private User users;
-	private Employers employers;
-	private JobSeekers job_seekers;
-	private VerificationCode verificationCode;
+	
+	
 	private EmployerService employerService;
 	private JobSeekersService jobSeekersService;
 	private VerificationCodeService verificationCodeService;
-	private SystemEmployee system_employee;
+	
 	private SystemEmployeeService employeeService;
-	private JobPositions job_positions;
+
 	private UserService userService;
 	private MernisValidationService mernisValidationService;
 	private SimulatedMernisService mernisService;
@@ -47,22 +46,21 @@ public class AuthManager implements AuthService{
 	private UserDao usersDao;
 
 	@Autowired
-	public AuthManager(User users , Employers employers, VerificationCode verificationCode,JobSeekers job_seekers, 
+	public AuthManager(  
 			EmployerService employerService, JobSeekersService jobSeekersService ,VerificationCodeService verificationCodeService, 
-			SystemEmployee system_employee, JobPositions job_positions, UserService userService, MernisValidationService mernisValidationService,
+			UserService userService, MernisValidationService mernisValidationService,
 			SimulatedMernisService mernisService, VerificationService verificationService , UserDao usersDao) {
 		
 		super();
-		this.usersDao=usersDao;
-		this.employers=employers;
+		
 		this.employerService=employerService;
-		this.job_seekers=job_seekers;
+		
 		this.jobSeekersService=jobSeekersService;
-		this.users=users;
-		this.verificationCode=verificationCode;
+	
+	
 		this.verificationCodeService=verificationCodeService;
-		this.system_employee=system_employee;
-		this.job_positions=job_positions;
+
+
 		this.userService=userService;
 		this.mernisValidationService=mernisValidationService;
 		this.mernisService=mernisService;
@@ -174,9 +172,13 @@ public class AuthManager implements AuthService{
 	
 	private boolean CheckIfEmailandDomainSame(String email,String web_site) {
 		String[] emailArr = email.split("@", 2);
-		if((emailArr[1].equals(employers.getWeb_site().contains(web_site.subSequence(4,web_site.length()))))) {
+		String domain = web_site.substring(4, web_site.length());
+
+		if (emailArr[1].equals(domain)) {
+
 			return true;
 		}
+
 		return false;
 	}
 	
@@ -199,11 +201,4 @@ public class AuthManager implements AuthService{
 
 
 
-		@Override
-		public DataResult<List<User>> getAll() {
-			return new SuccessDataResult<List<User>>
-			(this.usersDao.findAll(),"Data Listed");
-		
-		}
-	
 }

@@ -10,7 +10,7 @@ import kodlamaio.hrms.entities.concretes.User;
 
 public interface AuthService {
 
-	DataResult<List<User>> getAll();
+
 	Result employersRegister(Employers employers, String confirmPassword );
 	Result jobSeekersRegister(JobSeekers job_seekers, String confirmPassword);
 	
