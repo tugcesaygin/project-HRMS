@@ -35,7 +35,7 @@ public class Employers extends User{
 	private String telNo;
 	
 	@OneToMany(mappedBy= "employers")
-	private List<JobAdvertisement>jobAvertisements;
+	private List<JobAdvertisement>jobAdvertisement;
 	
 	
 	

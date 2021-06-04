@@ -4,6 +4,9 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -20,11 +23,14 @@ import lombok.NoArgsConstructor;
 
 public class JobAdvertisement  {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name= "jobadvert_id")
+	private int jobadvertId;
+	
 	@Column(name="company_name")
 	private String companyName;
 	
-	@Column(name= "general_job_position_name")
-	private String generalJobPositionName;
 	
 	@Column(name="number_of_open_positions")
 	private int numberOfOpenPositions;
@@ -38,6 +44,11 @@ public class JobAdvertisement  {
 	@Column(name = "is_open")
 	private boolean isOpen;
 
+	
+	@ManyToOne()
+	@JoinColumn(name ="job_positions_id")
+	private JobPositions jobPositions;
+	
 	
 	@ManyToOne()
 	@JoinColumn(name="employers_id")

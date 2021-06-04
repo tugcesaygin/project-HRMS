@@ -40,5 +40,6 @@ public class JobSeekers extends User {
 	private LocalDate yearOfBirth;
 	
 	
+	
 
 }
