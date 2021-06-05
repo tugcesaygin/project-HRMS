@@ -39,6 +39,7 @@ public class CvEducationManager implements CvEducationService {
 
 	@Override
 	public DataResult<List<CvEducation>> getAllByIdOrderByGraduationDateDesc(int jobSeekersId) {
+		
 		return new SuccessDataResult<List<CvEducation>>(this.cvEducationDao.getAllByIdOrderByGraduationDateDesc(jobSeekersId));
 	}
 	
