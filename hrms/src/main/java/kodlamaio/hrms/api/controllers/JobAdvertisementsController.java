@@ -29,10 +29,7 @@ public class JobAdvertisementsController {
 	}
 
 	
-	@PostMapping("/getAll")
-	public DataResult<List<JobAdvertisement>> getAll(){
-		return this.jobAdvertisementService.getAll();
-	}
+
 	
 	@PostMapping("/getByJobAdvertId")
 	public DataResult<JobAdvertisement> getByJobadvertId(@RequestParam int jobadvertId){
