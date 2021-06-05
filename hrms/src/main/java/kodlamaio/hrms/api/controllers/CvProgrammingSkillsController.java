@@ -42,10 +42,6 @@ public class CvProgrammingSkillsController {
 	}
 	
 	
-	@GetMapping("/getAll")
-	public DataResult<List<CvProgrammingSkills>>getAll(){
-		return this.cvProgrammingSkillsService.getAll();
-	}
 	
 	@GetMapping("/getAllByJobSeekersId")
 	public DataResult<List<CvProgrammingSkills>>getAllByJobSeekersId(int jobSeekersId){

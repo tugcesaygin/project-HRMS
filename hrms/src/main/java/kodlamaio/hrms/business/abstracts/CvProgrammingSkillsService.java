@@ -11,8 +11,6 @@ public interface CvProgrammingSkillsService {
 	Result update(CvProgrammingSkills cvProgrammingSkills);
 	Result delete(int id);
 	
-	//DataResult<List<CvProgrammingSkills>>getById(int id);
-	DataResult<List<CvProgrammingSkills>>getAll();
 	DataResult<List<CvProgrammingSkills>>getAllByJobSeekersId(int jobSeekersId);
 	
 	

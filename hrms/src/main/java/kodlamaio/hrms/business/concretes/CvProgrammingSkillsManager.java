@@ -45,10 +45,7 @@ public class CvProgrammingSkillsManager implements CvProgrammingSkillsService {
 
 	
 
-	@Override
-	public DataResult<List<CvProgrammingSkills>> getAll() {
-		return new SuccessDataResult<List<CvProgrammingSkills>>(this.cvProgrammingSkillsDao.getAll());
-	}
+	
 
 	@Override
 	public DataResult<List<CvProgrammingSkills>> getAllByJobSeekersId(int jobSeekersId) {

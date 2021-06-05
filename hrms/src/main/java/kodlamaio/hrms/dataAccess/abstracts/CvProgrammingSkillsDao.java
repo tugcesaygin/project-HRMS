@@ -10,5 +10,5 @@ public interface CvProgrammingSkillsDao extends JpaRepository<CvProgrammingSkill
 
 	CvProgrammingSkills getById(int id);
 	List<CvProgrammingSkills>getAllByJobSeekersId(int jobSeekersId);
-
+	
 }

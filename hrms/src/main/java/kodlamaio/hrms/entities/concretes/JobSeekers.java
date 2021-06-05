@@ -58,4 +58,10 @@ public class JobSeekers extends User {
 	@JsonIgnore
 	@OneToMany
 	private List<CvProgrammingSkills>cvProgrammingSkills;
+	
+
+	@JsonIgnore
+	@OneToMany
+	private List<CvCoverLetter>cvCoverLetter;
+	
 }
