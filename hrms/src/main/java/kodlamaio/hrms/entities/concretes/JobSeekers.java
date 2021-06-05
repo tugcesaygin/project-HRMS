@@ -51,5 +51,8 @@ public class JobSeekers extends User {
 	@OneToMany()
 	private List<CvExperience>cvExperience;
 	
+	@JsonIgnore
+	@OneToMany()
+	private List<CvForeignLanguages>cvForeignLanguages;
 
 }
