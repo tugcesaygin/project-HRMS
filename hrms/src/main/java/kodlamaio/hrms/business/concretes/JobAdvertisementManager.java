@@ -1,6 +1,7 @@
 package kodlamaio.hrms.business.concretes;
 
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +28,7 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	}
 	
 	
-	
-	@Override
-	public DataResult<JobAdvertisement> getByJobAdvertId(int jobadvertId) {
-		
-		return null;
-	}
+
 
 	@Override
 	public Result add(JobAdvertisement jobAdvertisement) {
@@ -59,49 +55,59 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	@Override
 	public Result changeOpenToClose(int jobadvertId) {
 	
-		if(getByJobAdvertId(jobadvertId)==null) {
+		if(getByJobadvertId(jobadvertId)==null) {
 			return new ErrorResult("Job Advert does not exist.");
 		}
-		if(getByJobAdvertId(jobadvertId).getData().isOpen()==false) {
+		if(getByJobadvertId(jobadvertId).getData().isOpen()==false) {
 			return new ErrorResult("This job advert has been removed. ");
 		}
-		JobAdvertisement jobAdvertisement = getByJobAdvertId(jobadvertId).getData();
+		JobAdvertisement jobAdvertisement = getByJobadvertId(jobadvertId).getData();
 		jobAdvertisement.setOpen(false);
 		update(jobAdvertisement);
 		return new SuccessResult("Job Advertisement has been successfully closed.");
 	}
 
 	@Override
-	public DataResult<List<JobAdvertisement>> getAllOpenJobAdvertisementByEmployers() {
-		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getAllOpenJobAdvertisementByEmployers());
+	public DataResult<List<JobAdvertisement>> getByIsOpenAndEmployers_Id(boolean isOpen, int employerId) {
+		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getByIsOpenAndEmployers_Id(isOpen, employerId));
 		
 	}
 
-	@Override
-	public DataResult<List<JobAdvertisement>> getAllOpenJobAdvertisementByCompanyName() {
-		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getAllOpenJobAdvertisementByCompanyName());
+	//@Override
+//	public DataResult<List<JobAdvertisement>> getByIsOpenByCompanyName() {
+//		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getByIsOpenByCompanyName());
 	
-	}
+	//}
 
 	@Override
-	public DataResult<List<JobAdvertisement>> getByAllOpenJobAdvertisementByApplicationDeadline() {
-		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getByAllOpenJobAdvertisementByApplicationDeadline());
+	public DataResult<List<JobAdvertisement>>getByIsOpenAndApplicationDeadline(boolean isOpen , LocalDate applicationDate) {
+		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getByIsOpenAndApplicationDeadline(isOpen, applicationDate));
 	}
 
 
 
-	@Override
-	public DataResult<List<JobAdvertisement>> getAll() {
-		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getAll());
-	}
+
 	
 	private boolean CheckAllInfo(JobAdvertisement jobAdvertisement) {
 		if(jobAdvertisement.getJobPositions()!= null && jobAdvertisement.getCompanyName()!=null
-				&& jobAdvertisement.getNumberOfOpenPositions()!=0 &&jobAdvertisement.getApplicationDeadline()!=null ) {
+				&& jobAdvertisement.getOpenPositions()!=0 &&jobAdvertisement.getApplicationDeadline()!=null ) {
 			return true;
 		}
 		return false;
 	}
+
+
+
+
+	@Override
+	public DataResult<JobAdvertisement> getByJobadvertId(int jobadvertId) {
+		return new SuccessDataResult<JobAdvertisement>(this.jobAdvertisementDao.getByJobadvertId(jobadvertId));
+	
+	}
+
+
+
+
 
 	
 }

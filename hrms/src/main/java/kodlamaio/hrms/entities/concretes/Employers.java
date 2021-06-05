@@ -8,6 +8,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,6 +22,7 @@ import lombok.NoArgsConstructor;
 @Table(name= "employers")
 @EqualsAndHashCode(callSuper = false) 
 @PrimaryKeyJoinColumn(name="user_id", referencedColumnName="id") 
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdvertisement"})
 
 public class Employers extends User{
 

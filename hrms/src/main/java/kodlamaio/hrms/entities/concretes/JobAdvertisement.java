@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name= "job_advertisements")
+@Table(name="job_advertisements")
 
 public class JobAdvertisement  {
 	
@@ -32,8 +32,8 @@ public class JobAdvertisement  {
 	private String companyName;
 	
 	
-	@Column(name="number_of_open_positions")
-	private int numberOfOpenPositions;
+	@Column(name="open_positions")
+	private int OpenPositions;
 	
 	@Column(name="release_date")
 	private LocalDate releaseDate;

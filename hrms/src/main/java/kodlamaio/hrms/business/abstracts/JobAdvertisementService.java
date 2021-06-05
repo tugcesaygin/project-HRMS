@@ -1,6 +1,7 @@
 package kodlamaio.hrms.business.abstracts;
 
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -11,9 +12,9 @@ import kodlamaio.hrms.entities.concretes.JobAdvertisement;
 
 public interface JobAdvertisementService {
 
-	DataResult<List<JobAdvertisement>> getAll();
+
 	
-	DataResult<JobAdvertisement> getByJobAdvertId(int jobadvertId);
+	DataResult<JobAdvertisement> getByJobadvertId(int jobadvertId);
 	
 	Result add(JobAdvertisement jobAdvertisement);
 	Result update(JobAdvertisement jobAdvertisement);
@@ -21,10 +22,10 @@ public interface JobAdvertisementService {
 	Result changeOpenToClose(int jobadvertId);
 
 
-	DataResult<List<JobAdvertisement>>getAllOpenJobAdvertisementByEmployers();
+	DataResult<List<JobAdvertisement>>getByIsOpenAndEmployers_Id(boolean isOpen, int employerId);
 	
-	DataResult<List<JobAdvertisement>>getAllOpenJobAdvertisementByCompanyName();
+	//DataResult<List<JobAdvertisement>>getByIsOpenAndCompanyName();
 	
-	DataResult<List<JobAdvertisement>>getByAllOpenJobAdvertisementByApplicationDeadline();
+	DataResult<List<JobAdvertisement>>getByIsOpenAndApplicationDeadline(boolean isOpen , LocalDate applicationDeadline);
 	
 }

@@ -1,5 +1,6 @@
 package kodlamaio.hrms.api.controllers;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,8 @@ public class JobAdvertisementsController {
 	}
 	
 	@PostMapping("/getByJobAdvertId")
-	public DataResult<JobAdvertisement> getByJobAdvertId(@RequestParam int jobadvertId){
-		return this.jobAdvertisementService.getByJobAdvertId(jobadvertId);
+	public DataResult<JobAdvertisement> getByJobadvertId(@RequestParam int jobadvertId){
+		return this.jobAdvertisementService.getByJobadvertId(jobadvertId);
 	}
 	
 	@PostMapping("/add")
@@ -53,18 +54,18 @@ public class JobAdvertisementsController {
 	// public Result changeOpenToClose(int jobadvertId){}
 
 	@PostMapping("/getAllOpenJobAdvertisementByEmployers")
-	public DataResult<List<JobAdvertisement>>getAllOpenJobAdvertisementByEmployers(){
-		return this.jobAdvertisementService.getAllOpenJobAdvertisementByEmployers();
+	public DataResult<List<JobAdvertisement>>getByIsOpenByEmployers(boolean isOpen, int employerId){
+		return this.jobAdvertisementService.getByIsOpenAndEmployers_Id(isOpen, employerId);
 	}
 	
-	@PostMapping("/getAllOpenJobAdvertisementByCompanyName")
-	public DataResult<List<JobAdvertisement>>getAllOpenJobAdvertisementByCompanyName(){
-		return this.jobAdvertisementService.getAllOpenJobAdvertisementByCompanyName();
-	}
+	//@PostMapping("/getAllOpenJobAdvertisementByCompanyName")
+	//public DataResult<List<JobAdvertisement>>getByAllOpenJobAdvertisementByCompanyName(){
+	//	return this.jobAdvertisementService.getByIsOpenByCompanyName();
+	//}
 	
 	@PostMapping("/getAllOpenJobAdvertisementByApplicationDeadline")
-	public DataResult<List<JobAdvertisement>>getByAllOpenJobAdvertisementByApplicationDeadline(){
-		return this.jobAdvertisementService.getByAllOpenJobAdvertisementByApplicationDeadline();
+	public DataResult<List<JobAdvertisement>>getByIsOpenByApplicationDeadline(boolean isOpen, LocalDate applicationDeadline){
+		return this.jobAdvertisementService.getByIsOpenAndApplicationDeadline(isOpen, applicationDeadline);
 	}
 	
 	
