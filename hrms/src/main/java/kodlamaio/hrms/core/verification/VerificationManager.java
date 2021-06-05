@@ -4,6 +4,9 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import kodlamaio.hrms.core.utilities.results.Result;
+import kodlamaio.hrms.entities.concretes.VerificationCode;
+
 @Service
 public class VerificationManager implements VerificationService{
 
@@ -23,6 +26,18 @@ public class VerificationManager implements VerificationService{
 		System.out.println("Your activation code:  " + verificationCode );
 		return verificationCode;
 
+	}
+
+	@Override
+	public Result save(VerificationCode code) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String verfyCode() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -35,6 +35,9 @@ public class VerificationCode {
 	@Column(name="is_verified")
 	private boolean is_verified;
 	
+	@Column(name="email_verification")
+	private String emailVerification;
+	
 	
 	
 }
