@@ -8,6 +8,7 @@ import kodlamaio.hrms.entities.concretes.CvExperience;
 import kodlamaio.hrms.entities.concretes.CvForeignLanguages;
 import kodlamaio.hrms.entities.concretes.CvProgrammingSkills;
 import kodlamaio.hrms.entities.concretes.JobSeekers;
+import kodlamaio.hrms.entities.concretes.LinkForCv;
 
 public class DtoJobSeekersCv {
 
@@ -17,6 +18,7 @@ public class DtoJobSeekersCv {
 	public List<CvForeignLanguages>cvForeignLanguages;
 	public List<CvProgrammingSkills>cvProgrammingSkills;
 	public List<CvCoverLetter>cvCoverLetter;
+	public List<LinkForCv>linkForCv;
 
 	
 }

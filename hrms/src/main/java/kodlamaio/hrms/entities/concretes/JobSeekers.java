@@ -64,4 +64,8 @@ public class JobSeekers extends User {
 	@OneToMany
 	private List<CvCoverLetter>cvCoverLetter;
 	
+	@JsonIgnore
+	@OneToMany
+	private List<LinkForCv>linkForCv;
+	
 }
