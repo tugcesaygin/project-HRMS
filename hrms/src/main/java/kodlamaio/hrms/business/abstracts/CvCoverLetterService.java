@@ -12,7 +12,7 @@ public interface CvCoverLetterService {
 	Result add(CvCoverLetter cvCoverLetter);
 	Result delete(CvCoverLetter cvCoverLetter);
 	
-	
+	DataResult<List<CvCoverLetter>>getAll();
 	DataResult<CvCoverLetter> getById(int id);
 	DataResult<List<CvCoverLetter>>getAllByJobSeekersId(int jobSeekersId);
 	

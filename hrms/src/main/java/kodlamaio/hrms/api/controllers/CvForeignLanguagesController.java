@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.hrms.business.abstracts.CvForeignLanguagesService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
+
 import kodlamaio.hrms.entities.concretes.CvForeignLanguages;
 
 @RestController
@@ -51,5 +52,8 @@ public class CvForeignLanguagesController {
 		return this.cvForeignLanguages.getById(id);
 	}
 
+	public DataResult<List<CvForeignLanguages>>getAll(){
+		return this.cvForeignLanguages.getAll();
+	}
 	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
+
 import kodlamaio.hrms.entities.concretes.CvProgrammingSkills;
 
 public interface CvProgrammingSkillsService {
@@ -13,5 +14,5 @@ public interface CvProgrammingSkillsService {
 	
 	DataResult<List<CvProgrammingSkills>>getAllByJobSeekersId(int jobSeekersId);
 	
-	
+	DataResult<List<CvProgrammingSkills>>getAll();
 }

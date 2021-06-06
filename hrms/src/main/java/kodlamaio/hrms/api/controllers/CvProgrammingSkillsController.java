@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.hrms.business.abstracts.CvProgrammingSkillsService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
+
 import kodlamaio.hrms.entities.concretes.CvProgrammingSkills;
 
 @RestController
@@ -46,6 +47,11 @@ public class CvProgrammingSkillsController {
 	@GetMapping("/getAllByJobSeekersId")
 	public DataResult<List<CvProgrammingSkills>>getAllByJobSeekersId(int jobSeekersId){
 		return this.cvProgrammingSkillsService.getAllByJobSeekersId(jobSeekersId);
+	}
+	
+	@GetMapping("/getAll")
+	public DataResult<List<CvProgrammingSkills>>getAll(){
+		return this.cvProgrammingSkillsService.getAll();
 	}
 	
 	

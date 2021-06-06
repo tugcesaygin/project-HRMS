@@ -51,6 +51,11 @@ public class CvCoverLetterManager implements CvCoverLetterService{
 		return new SuccessDataResult<List<CvCoverLetter>>(this.cvCoverLetterDao.getAllByJobSeekersId(jobSeekersId));
 	}
 
+	@Override
+	public DataResult<List<CvCoverLetter>> getAll() {
+		return new SuccessDataResult<List<CvCoverLetter>>(this.cvCoverLetterDao.findAll());
+	}
+
 	
 	
 	

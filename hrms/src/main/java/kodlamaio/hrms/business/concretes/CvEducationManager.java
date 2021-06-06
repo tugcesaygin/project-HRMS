@@ -42,6 +42,11 @@ public class CvEducationManager implements CvEducationService {
 		
 		return new SuccessDataResult<List<CvEducation>>(this.cvEducationDao.getAllByIdOrderByGraduationDateDesc(jobSeekersId));
 	}
+
+	@Override
+	public DataResult<List<CvEducation>> getAll() {
+		return new SuccessDataResult<List<CvEducation>>(this.cvEducationDao.findAll());
+	}
 	
 	
 }

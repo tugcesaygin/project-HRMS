@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.hrms.business.abstracts.CvEducationService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
+
 import kodlamaio.hrms.entities.concretes.CvEducation;
 
 @RestController
@@ -32,7 +33,7 @@ public class CvEducationsController {
 		return this.cvEducationService.add(cvEducation);
 	}
 	
-	@PostMapping("/getbyid")
+	@GetMapping("/getbyid")
 	DataResult<List<CvEducation>>getAllByJobSeekersId(@RequestParam   int id){
 		return this.cvEducationService.getAllByIdOrderByGraduationDateDesc(id);
 		
@@ -41,6 +42,11 @@ public class CvEducationsController {
 	@GetMapping("/getAllByIdOrderByGraduationDateDesc")
 	DataResult<List<CvEducation>>getAllByIdOrderByGraduationDateDesc(int jobSeekersId){
 		return this.cvEducationService.getAllByIdOrderByGraduationDateDesc(jobSeekersId);
+	}
+
+	@GetMapping("/getAll")
+	DataResult<List<CvEducation>> getAll(){
+		return this.cvEducationService.getAll();
 	}
 	
 }
