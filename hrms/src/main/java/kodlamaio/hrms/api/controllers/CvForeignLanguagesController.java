@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.CvForeignLanguagesService;
@@ -25,30 +27,30 @@ public class CvForeignLanguagesController {
 	}
 	
 	@PostMapping("/add")
-	public Result add(CvForeignLanguages cvForeignLanguages) {
+	public Result add( @RequestBody  CvForeignLanguages cvForeignLanguages) {
 		return this.cvForeignLanguages.add(cvForeignLanguages);
 	}
 	
 	@PostMapping("/update")
-	public Result update(CvForeignLanguages cvForeignLanguages) {
+	public Result update(@RequestBody   CvForeignLanguages cvForeignLanguages) {
 		return this.cvForeignLanguages.update(cvForeignLanguages);
 	}
 	
 	
 	@PostMapping("/delete")
-	public Result delete(int id) {
+	public Result delete(@RequestParam int id) {
 		return this.cvForeignLanguages.delete(id);
 	}
 	
 	
 	@PostMapping("/getAllByJobSeekersId")
-	public DataResult<List<CvForeignLanguages>>getAllByJobSeekersId(int jobSeekersId){
+	public DataResult<List<CvForeignLanguages>>getAllByJobSeekersId( @RequestParam int jobSeekersId){
 		return this.cvForeignLanguages.getAllByJobSeekersId(jobSeekersId);
 	}
 	
 	
 	@PostMapping("/getById")
-	public DataResult<List<CvForeignLanguages>>getById(int id){
+	public DataResult<List<CvForeignLanguages>>getById(@RequestParam  int id){
 		return this.cvForeignLanguages.getById(id);
 	}
 

@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.CvProgrammingSkillsService;
@@ -27,25 +29,25 @@ public class CvProgrammingSkillsController {
 	}
 	
 	@PostMapping("/add")
-	public Result add(CvProgrammingSkills cvProgrammingSkills) {
+	public Result add(@RequestBody   CvProgrammingSkills cvProgrammingSkills) {
 		return this.cvProgrammingSkillsService.add(cvProgrammingSkills);
 	}
 	
 	@PostMapping("/update")
-	public Result update(CvProgrammingSkills cvProgrammingSkills) {
+	public Result update(@RequestBody  CvProgrammingSkills cvProgrammingSkills) {
 		return this.cvProgrammingSkillsService.update(cvProgrammingSkills);
 	}
 	
 	
 	@PostMapping("/delete")
-	public Result delete(int id) {
+	public Result delete( @RequestParam  int id) {
 		return this.cvProgrammingSkillsService.delete(id);
 	}
 	
 	
 	
 	@GetMapping("/getAllByJobSeekersId")
-	public DataResult<List<CvProgrammingSkills>>getAllByJobSeekersId(int jobSeekersId){
+	public DataResult<List<CvProgrammingSkills>>getAllByJobSeekersId(@RequestParam   int jobSeekersId){
 		return this.cvProgrammingSkillsService.getAllByJobSeekersId(jobSeekersId);
 	}
 	
