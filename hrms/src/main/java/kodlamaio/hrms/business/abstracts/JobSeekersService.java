@@ -9,6 +9,6 @@ public interface JobSeekersService {
 
 	DataResult<List<JobSeekers>>getAll();
 	Result add(JobSeekers job_seekers);
-
+	DataResult<JobSeekers>getById(int id);
 	DataResult<JobSeekers> getJobSeekersByIdentityNo(String identity_no);
 }
