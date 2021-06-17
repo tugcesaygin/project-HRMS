@@ -1,13 +1,11 @@
 package kodlamaio.hrms.core.entities;
 
-
-import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -16,27 +14,24 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Table(name= "base")
+@Table(name="users")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Base {
+public class User {
+	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
 	
-	@Column(name="email")
+	@Column(name = "email")
 	private String email;
 	
-	@Column(name="password")
+	@Column(name= "password")
 	private String password;
 	
-	@Column(name="status")
-	private boolean status;
 	
-	@Column(name="created_on")
-	private LocalDateTime createdOn= LocalDateTime.now();
 	
 	
 	

@@ -12,6 +12,8 @@ import kodlamaio.hrms.business.abstracts.JobSeekersService;
 import kodlamaio.hrms.business.abstracts.SystemEmployeeService;
 import kodlamaio.hrms.business.abstracts.UserService;
 import kodlamaio.hrms.business.abstracts.VerificationCodeService;
+import kodlamaio.hrms.core.dataAccess.UserDao;
+import kodlamaio.hrms.core.entities.User;
 import kodlamaio.hrms.core.utilities.adaptors.MernisValidationService;
 import kodlamaio.hrms.core.utilities.adaptors.SimulatedMernisService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
@@ -20,11 +22,9 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.core.verification.VerificationService;
-import kodlamaio.hrms.dataAccess.abstracts.UserDao;
 import kodlamaio.hrms.entities.concretes.Employers;
 import kodlamaio.hrms.entities.concretes.JobPositions;
 import kodlamaio.hrms.entities.concretes.JobSeekers;
-import kodlamaio.hrms.entities.concretes.User;
 import kodlamaio.hrms.entities.concretes.VerificationCode;
 
 @Service

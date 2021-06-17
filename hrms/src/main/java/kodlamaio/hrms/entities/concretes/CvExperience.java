@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import kodlamaio.hrms.core.entities.Base;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Table(name="cv_experience")
 @NoArgsConstructor
 @AllArgsConstructor
-public class CvExperience extends Base {
+public class CvExperience {
 	
 	
 	@Column(name = "company_name")

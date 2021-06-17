@@ -17,7 +17,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 
-import kodlamaio.hrms.core.entities.Base;
+
 
 @Entity
 @Data
@@ -25,7 +25,7 @@ import kodlamaio.hrms.core.entities.Base;
 @EqualsAndHashCode(callSuper = false) 
 @AllArgsConstructor
 @NoArgsConstructor
-public class CvEducation extends Base {
+public class CvEducation  {
 	
 	//@Id
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)

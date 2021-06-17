@@ -10,7 +10,7 @@ import javax.validation.constraints.Min;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import kodlamaio.hrms.core.entities.Base;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false) 
 @AllArgsConstructor
 @NoArgsConstructor
-public class CvForeignLanguages extends Base{
+public class CvForeignLanguages {
 
 	@Column(name="language")
 	private String language;

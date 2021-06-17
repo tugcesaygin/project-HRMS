@@ -6,7 +6,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import kodlamaio.hrms.core.entities.Base;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false) 
 @Table(name= "link_for_cv")
 
-public class LinkForCv extends Base {
+public class LinkForCv {
 	
 	@Column(name= "name")
 	private String name;
