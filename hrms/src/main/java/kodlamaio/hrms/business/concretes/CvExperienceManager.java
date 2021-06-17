@@ -1,5 +1,6 @@
 package kodlamaio.hrms.business.concretes;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +39,12 @@ public class CvExperienceManager implements CvExperienceService{
 
 	@Override
 	public DataResult<List<CvExperience>> getAllByJobSeekersIdOrderByEndAtDesc(int jobSeekersId) {
-		
 		return new SuccessDataResult<List<CvExperience>>(this.cvExperienceDao.getAllByJobSeekersIdOrderByEndAtDesc(jobSeekersId));
 	}
+
 	
+
+
 	
 	
 	

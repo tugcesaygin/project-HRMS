@@ -1,5 +1,6 @@
 package kodlamaio.hrms.business.concretes;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,14 +34,14 @@ public class CvEducationManager implements CvEducationService {
 
 
 	@Override
-	public DataResult<List<CvEducation>> getAllByJobSeekersId(int id) {
-		return new SuccessDataResult<List<CvEducation>>(this.cvEducationDao.getAllByJobSeekersId(id));
+	public DataResult<List<CvEducation>> getAllByJobSeekersId(int jobSeekersId) {
+		return new SuccessDataResult<List<CvEducation>>(this.cvEducationDao.getAllByJobSeekersId(jobSeekersId));
 	}
 
 	@Override
-	public DataResult<List<CvEducation>> getAllByIdOrderByGraduationDateDesc(int jobSeekersId) {
+	public DataResult<List<CvEducation>> getAllByJobSeekersIdOrderByGraduationDateDesc(LocalDateTime jobSeekersId) {
 		
-		return new SuccessDataResult<List<CvEducation>>(this.cvEducationDao.getAllByIdOrderByGraduationDateDesc(jobSeekersId));
+		return new SuccessDataResult<List<CvEducation>>(this.cvEducationDao.getAllByJobSeekersIdOrderByGraduationDateDesc(jobSeekersId));
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package kodlamaio.hrms.api.controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,14 +35,14 @@ public class CvEducationsController {
 	}
 	
 	@GetMapping("/getbyid")
-	DataResult<List<CvEducation>>getAllByJobSeekersId(@RequestParam   int id){
-		return this.cvEducationService.getAllByIdOrderByGraduationDateDesc(id);
+	DataResult<List<CvEducation>>getAllByJobSeekersId(@RequestParam   int jobSeekersId){
+		return this.cvEducationService.getAllByJobSeekersId(jobSeekersId);
 		
 	}
 	
 	@GetMapping("/getAllByIdOrderByGraduationDateDesc")
-	DataResult<List<CvEducation>>getAllByIdOrderByGraduationDateDesc( @RequestParam  int jobSeekersId){
-		return this.cvEducationService.getAllByIdOrderByGraduationDateDesc(jobSeekersId);
+	DataResult<List<CvEducation>>getAllByJobSeekersIdOrderByGraduationDateDesc( @RequestParam  LocalDateTime jobSeekersId){
+		return this.cvEducationService.getAllByJobSeekersIdOrderByGraduationDateDesc(jobSeekersId);
 	}
 
 	@GetMapping("/getAll")

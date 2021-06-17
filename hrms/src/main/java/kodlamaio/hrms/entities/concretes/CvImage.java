@@ -38,7 +38,7 @@ public class CvImage {
 	@ManyToOne()
 	@JoinColumn(name = "job_seekers_id")
 	@JsonIgnore()
-	private JobSeekers jobSeeker;
+	private JobSeekers jobSeekers;
 
 	
 	

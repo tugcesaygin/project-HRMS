@@ -32,8 +32,8 @@ public class CvEducation  {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "education_id")
-	private int educationId;
+	@Column(name = "cv_education_id")
+	private int cvEducationId;
 	
 	@NotBlank(message = "The field must be filled")
 	@Column(name = "school_type")

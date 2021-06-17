@@ -1,5 +1,6 @@
 package kodlamaio.hrms.business.abstracts;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import kodlamaio.hrms.core.utilities.results.DataResult;
@@ -15,8 +16,8 @@ public interface CvEducationService {
 	
 	DataResult<List<CvEducation>>getAll();
 	
-	DataResult<List<CvEducation>>getAllByJobSeekersId(int id);
+	DataResult<List<CvEducation>>getAllByJobSeekersId(int jobSeekersId);
 	
-	DataResult<List<CvEducation>>getAllByIdOrderByGraduationDateDesc(int jobSeekersId);
+	DataResult<List<CvEducation>>getAllByJobSeekersIdOrderByGraduationDateDesc(LocalDateTime jobSeekersId);
 	
 }
