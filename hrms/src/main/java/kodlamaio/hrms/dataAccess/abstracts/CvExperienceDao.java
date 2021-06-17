@@ -8,7 +8,7 @@ import kodlamaio.hrms.entities.concretes.CvExperience;
 
 public interface CvExperienceDao extends JpaRepository<CvExperience, Integer> {
 
-	CvExperience getById(int id);
+	CvExperience getByExperienceIdId(int experienceId);
 	List<CvExperience>getAllByJobSeekersId(int jobSeekersId);
 	List<CvExperience>getAllByJobSeekersIdOrderByEndAtDesc(int jobSeekersId);
 	

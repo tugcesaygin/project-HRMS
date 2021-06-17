@@ -19,6 +19,6 @@ public interface CvForeignLanguagesService  {
 	
 	DataResult<List<CvForeignLanguages>>getAllByJobSeekersId(int jobSeekersId);
 	DataResult<List<CvForeignLanguages>>getAll();
-	DataResult<List<CvForeignLanguages>>getById(int id);
+	DataResult<List<CvForeignLanguages>>getByForeignLanguagesId(int foreignLanguagesId);
 
 }

@@ -50,8 +50,8 @@ public class CvForeignLanguagesManager implements CvForeignLanguagesService {
     	}
 	
 	@Override
-	public DataResult<List<CvForeignLanguages>> getById(int id) {
-		return new SuccessDataResult<List<CvForeignLanguages>>(this.cvForeignLanguagesDao.getById(id));
+	public DataResult<List<CvForeignLanguages>> getByForeignLanguagesId(int foreignLanguagesId) {
+		return new SuccessDataResult<List<CvForeignLanguages>>(this.cvForeignLanguagesDao.getByForeignLanguagesId(foreignLanguagesId));
 	}
 	
 	

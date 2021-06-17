@@ -50,8 +50,8 @@ public class CvForeignLanguagesController {
 	
 	
 	@PostMapping("/getById")
-	public DataResult<List<CvForeignLanguages>>getById(@RequestParam  int id){
-		return this.cvForeignLanguages.getById(id);
+	public DataResult<List<CvForeignLanguages>>getByForeignLanguagesId(@RequestParam  int foreignLanguagesId){
+		return this.cvForeignLanguages.getByForeignLanguagesId(foreignLanguagesId);
 	}
 
 	public DataResult<List<CvForeignLanguages>>getAll(){

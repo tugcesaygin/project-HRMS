@@ -10,5 +10,5 @@ public interface CvForeignLanguagesDao extends JpaRepository<CvForeignLanguages,
 
 	
 	List<CvForeignLanguages>getAllByJobSeekersId(int jobSeekersId);
-	List<CvForeignLanguages>getById(int id);
+	List<CvForeignLanguages>getByForeignLanguagesId(int foreignLanguagesId);
 }

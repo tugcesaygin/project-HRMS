@@ -8,6 +8,6 @@ import kodlamaio.hrms.entities.concretes.LinkForCv;
 
 public interface LinkForCvDao extends JpaRepository<LinkForCv, Integer>{
 
-	LinkForCv getById(int id);
+	LinkForCv getByLinkId(int linkId);
 	List<LinkForCv> getAllByJobSeekersId(int jobSeekersId);
 }

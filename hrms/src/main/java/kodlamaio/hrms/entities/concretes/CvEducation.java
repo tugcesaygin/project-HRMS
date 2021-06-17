@@ -4,6 +4,9 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -27,10 +30,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CvEducation  {
 	
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "education_id")
-	private int educationid;
+	private int educationId;
 	
 	@NotBlank(message = "The field must be filled")
 	@Column(name = "school_type")
