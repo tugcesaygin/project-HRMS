@@ -2,6 +2,9 @@ package kodlamaio.hrms.entities.concretes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -22,6 +25,11 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false) 
 public class CvCoverLetter {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "cv_cover_letter_id")
+	private int cvCoverLetterId;
+	
 	@Column(name= "content")
 	private String content;
 	

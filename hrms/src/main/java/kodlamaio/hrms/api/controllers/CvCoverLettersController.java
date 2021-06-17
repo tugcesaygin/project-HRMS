@@ -39,8 +39,8 @@ public class CvCoverLettersController {
 	}
 	
 	@GetMapping("/getById")
-	public DataResult<CvCoverLetter> getById(@RequestParam  int id){
-		return this.cvCoverLetterService.getById(id);
+	public DataResult<CvCoverLetter> getById(@RequestParam  int cvCoverLetterId){
+		return this.cvCoverLetterService.getById(cvCoverLetterId);
 	}
 	
 	@GetMapping("/getAllByJobSeekersId")

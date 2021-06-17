@@ -45,28 +45,33 @@ public class JobSeekers extends User {
 	private LocalDate yearOfBirth;
 	
 	@JsonIgnore
-	@OneToMany()
+	@OneToMany(mappedBy = "jobSeekers")
 	private List<CvEducation>cvEducation;
 	
 	@JsonIgnore
-	@OneToMany()
+	@OneToMany(mappedBy = "jobSeekers")
 	private List<CvExperience>cvExperience;
 	
 	@JsonIgnore
-	@OneToMany()
+	@OneToMany(mappedBy = "jobSeekers")
 	private List<CvForeignLanguages>cvForeignLanguages;
 
 	@JsonIgnore
-	@OneToMany
+	@OneToMany(mappedBy = "jobSeekers")
 	private List<CvProgrammingSkills>cvProgrammingSkills;
 	
 
 	@JsonIgnore
-	@OneToMany
+	@OneToMany(mappedBy = "jobSeekers")
 	private List<CvCoverLetter>cvCoverLetter;
 	
 	@JsonIgnore
-	@OneToMany
+	@OneToMany(mappedBy = "jobSeekers")
 	private List<LinkForCv>linkForCv;
+	
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "jobSeekers")
+	private List<CvImage>cvImage;
 	
 }

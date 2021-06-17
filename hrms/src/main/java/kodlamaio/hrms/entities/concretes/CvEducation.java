@@ -51,6 +51,10 @@ public class CvEducation  {
 	private JobSeekers jobSeekers;
 	
 	
+	@ManyToOne()
+	@JoinColumn(name = "city_id")
+	private City city;
+	
 	
 
 }

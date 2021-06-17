@@ -1,17 +1,17 @@
 package kodlamaio.hrms.api.controllers;
 
-import java.time.LocalDateTime;
+
 import java.util.List;
-import java.util.Map;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
+
 
 import kodlamaio.hrms.business.abstracts.CvImageService;
 import kodlamaio.hrms.business.abstracts.JobSeekersService;
@@ -45,14 +45,7 @@ public class CvImagesController {
 		return this.cvImageService.delete(cvImage);
 	}
 	
-	@PostMapping(value = "/addImage")
-	Result add(@RequestBody CvImage cvImage,@RequestParam(value ="file") MultipartFile file) {
-		Map<String,String >result = (Map<String,String>)imageService.save(file).getData();
-		String url = result.get("url");
-		cvImage.setUrl(url);
-		cvImage.setCreatedOn(LocalDateTime.now());
-		return add(cvImage);
-	}
+	
 
 	@GetMapping("/getById")
 	DataResult<CvImage> getById(@RequestParam("id")  int id){

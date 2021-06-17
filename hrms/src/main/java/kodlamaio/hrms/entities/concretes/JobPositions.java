@@ -28,8 +28,8 @@ public class JobPositions {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "job_positions_id")
+	private int jobPositionsId;
 	
 	@Column(name= "job_titles")
 	private String jobTitles;
